@@ -5,7 +5,7 @@
 
 ## Requirements ##
 
-编程语言：Python 3.12
+编程语言：Python 3.12 \n
 依赖说明：内置模块 + 第三方库 pandas
 所需依赖：socket、struct、threading、random、sys、time、pandas
 
