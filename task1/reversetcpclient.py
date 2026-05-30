@@ -2,7 +2,7 @@ import struct
 import socket
 import sys
 import random
-import threading  # 加了这个
+import threading
 
 TYPE_INIT = 1
 TYPE_AGREE = 2
