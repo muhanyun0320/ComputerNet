@@ -47,8 +47,8 @@ def client_main():
         sock.sendall(struct.pack(">HI", TYPE_REV_REQ, len(c)) + c) #发送请求报文
 
         h = sock.recv(6) #接受应答报文的头部
-        _, ln = struct.unpack(">HI", h) #解包头部以获得length
-        data = sock.recv(ln) #接受应答报文rev_data
+        _, len = struct.unpack(">HI", h) #解包头部以获得length
+        data = sock.recv(len) #接受应答报文rev_data
         result.append(data)
         print(f"第{i}块结果: {data.decode()}")
 
