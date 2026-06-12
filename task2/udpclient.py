@@ -48,7 +48,7 @@ def calc_timeout(initial=0.3):
         if SRTT is None:
             return initial
         RTO_ms = SRTT + 4 * RTTVAR
-        return max((RTO_ms / 1000)*backoff_coeff, 0.25)
+        return max((RTO_ms / 1000)*backoff_coeff, 0.15)
 
 def send_thread():
     global base, next_seq, total_sent_packets
@@ -125,7 +125,7 @@ def ack_thread():
                                 write_log(f"第{seq}个（第{start_byte}~{end_byte}字节）server端已经收到(重传后ACK，舍弃RTT采样)，server端系统时间={server_time}")
 
                     base = ack_seq+1
-                    if retrans_flag:
+                    if retrans_flag and base>=next_seq:
                         retrans_flag = False
                         backoff_coeff = 1.0
 
